@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ul, ol {
+    list-style: revert;
+  }
+}
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Space Grotesk, sans-serif;
+}
+
+.landing {
+  font-family: Russo One;
+  font-weight: 200;
+}
+
+.myFont {
+  font-family: DM Sans;
+}
+
+
+
+
+
+
+
+
+
+
