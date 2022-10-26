@@ -1,4 +1,5 @@
 import Layout from "../layout/Layout"
+import Refer from "../components/Refer"
 
 const Info = () => {
     return (
@@ -52,6 +53,7 @@ const Info = () => {
                     </div>
                 </div>
             </div>
+            <Refer />
         </Layout>
     )
 }
