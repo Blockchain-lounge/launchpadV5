@@ -1,19 +1,21 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
-import { faTwitter, faTelegram, faMedium, faGithub } from '@fortawesome/free-brands-svg-icons';
-import { faBars, faXmark } from '@fortawesome/free-solid-svg-icons';
+import { faTwitter, faTelegram, faMedium, faGithub, faUsps } from '@fortawesome/free-brands-svg-icons';
+import { faBars, faXmark, faRocket, faHandshake, faBookOpen, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
 import { useNavigate } from 'react-router-dom';
 import logo from '../images/cloudax1-_3_.png'
 import Inbox from '../components/Inbox';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion'
+import { useLocation } from 'react-router-dom';
 
-const Layout = ({ children, select }) => {
+const Layout = ({ children }) => {
+    const history = useLocation().pathname;
     const [nav, setNav] = useState(false)
 
     const navigation = useNavigate();
-    const year= new Date().getFullYear()
+    const year = new Date().getFullYear()
 
     const navigateHome = (data) => {
         navigation(data)
@@ -26,18 +28,21 @@ const Layout = ({ children, select }) => {
                 <div className='hidden lg:block lg:w-[15%] border-r lg:text-2xl text-[gray] border-[#ffffff35]'>
                     <div className='w-fit ml-[2rem]'>
                         <img onClick={() => navigateHome('/')} className=' w-[7rem] mt-[1.4rem] mb-[1.8rem]' src={logo} alt='logo' />
-                        <Link to='/' className='block py-4 w-full  hover:text-white text-left mb-4 focus:text-white'>Launchpad</Link>
-                        <button onClick={() => navigateHome('/staking')} className='block py-4 w-full text-left mb-4  hover:text-white focus:text-white'>Staking</button>
-                        <button onClick={() => navigateHome('/swap')} className='block py-4 w-full text-left mb-4  hover:text-white focus:text-white'>Swap</button>
-                        <button onClick={() => navigateHome('/Explorer')} className='block py-4 w-full text-left mb-4 hover:text-white  focus:text-white'>Explorer</button>
-                        <button onClick={() => navigateHome('/Rewards')} className='block  hover:text-white py-4 w-full text-left mb-4  focus:text-white'>Rewards</button>
+                        <Link to='/' className={`py-4 w-full flex gap-3 items-center hover:text-white text-left mb-4 ${history === '/' || history === '/private-sale' || history === '/public-sale' ? 'text-[#28CBEF]' : null}`}> <FontAwesomeIcon icon={faRocket} /> Launchpad</Link>
+                        <Link to='/staking' className={`py-4 w-full flex gap-3 items-center hover:text-white text-left mb-4 ${history === '/staking' && 'text-[#28CBEF]'}`}> <FontAwesomeIcon icon={faUsps} />  Staking</Link>
+                        <Link to='/swap' className={`py-4 w-full flex gap-3 items-center hover:text-white text-left mb-4 ${history === '/swap' && 'text-[#28CBEF]'}`}> <FontAwesomeIcon icon={faBookOpen} /> Swap</Link>
+                        <Link to='/Explorer' className={`py-4 w-full flex gap-3 items-center hover:text-white text-left mb-4 ${history === '/Explorer' && 'text-[#28CBEF]'}`}>
+                            <FontAwesomeIcon icon={faWindowMaximize} /> Explorer</Link>
+                        <Link to='/Rewards' className={`py-4 w-full flex gap-3 items-center hover:text-white text-left mb-4 ${history === '/Rewards' && 'text-[#28CBEF]'}`}> <FontAwesomeIcon icon={faHandshake} />  Rewards</Link>
                     </div>
                 </div>
-                <div className='w-full lg:w-[85%] overflow-y-auto overflow-x-hidden'>
+                <div className='w-full lg:w-[85%] overflow-y-auto overflow-x-hidden scrollbar-hide'>
                     <div className='w-11/12 mx-auto '>
                         <nav className=' sticky top-0 w-full h-[4rem] mb-[1rem] overflow-x'>
                             <div className=' w-full bg-black flex items-center justify-end h-[4rem]'>
-                                <img onClick={() => navigateHome('/')} className=' w-[5rem] ml-[1rem] block lg:hidden mr-auto' src={logo} alt='logo' />
+                                <Link className='mr-auto block lg:hidden ml-[1rem] ' to='/'>
+                                    <img className=' w-[5rem]' src={logo} alt='logo' />
+                                </Link>
                                 <button className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>Connect Wallet</button>
                                 <button onClick={() => setNav(!nav)} className={`text-white block ml-3 lg:hidden bg-[#4444b7] ${nav ? 'text-2xl' : 'text-xl'} rounded-md px-3 py-1`}>
                                     <FontAwesomeIcon icon={nav ? faXmark : faBars} />
@@ -87,11 +92,11 @@ const Layout = ({ children, select }) => {
                                 <div className='flex justify-center gap-0 md:justify-around items-center rounded-[40px] h-[10rem]  lg:h-[7rem] bg-[#80808016]   flex-wrap'>
                                     <img onClick={navigateHome} className=' w-[8rem] ' src={logo} alt='logo' />
                                     <div className='flex w-full lg:w-fit gap-x-6 gap-y-2 justify-center lg:justify-start flex-wrap lg:flex-nowrap  lg:gap-10  text-[#ffffff89]'>
-                                        <a href='/'> Whitepaper</a>
-                                        <p>Blog <sup className='text-[red] ml-1'>Soon</sup></p>
-                                        <a className='whitespace-nowrap' href='/terms'>Terms Of Use</a>
-                                        <a className='whitespace-nowrap' href='/privacy'>Privacy Policy</a>
-                                        <p>Academy <sup className='text-[red] ml-1'>Soon</sup></p>
+                                        <a className='hover:text-white' href='/'> Whitepaper</a>
+                                        <a className='hover:text-white' href='https://academy.cloudax.io/' target='_'>Blog</a>
+                                        <a className='whitespace-nowrap hover:text-white' href='/terms'>Terms Of Use</a>
+                                        <a className='whitespace-nowrap hover:text-white' href='/privacy'>Privacy Policy</a>
+                                        <a className='hover:text-white' href='https://academy.cloudax.io/' target='blank'>Academy</a>
                                     </div>
                                 </div>
                                 <p className='whitespace-nowrap text-[#ffffff89] mx-auto w-fit mt-[5rem]'><FontAwesomeIcon icon={faCopyright} /> All Rights Reserved Cloudax {year} </p>
