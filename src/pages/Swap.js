@@ -1,6 +1,6 @@
 import Layout from "../layout/Layout"
 
-const Sweep = () => {
+const Swap = () => {
     return (
         <Layout>
             <div>Sweep</div>
@@ -8,4 +8,4 @@ const Sweep = () => {
     )
 }
 
-export default Sweep
+export default Swap

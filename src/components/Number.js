@@ -7,7 +7,7 @@ const Number = ({item}) => {
             <img src={image} alt='one' />
             <div className=''>
                 <p className='font-black text-xl md:text-3xl mb-3'>{h1}</p>
-                <p className='lg:text-lg text-[#ffffff8d] lg:leading-[0]'>{note} </p>
+                <p className='lg:text-lg text-[#ffffff8d] '>{note} </p>
             </div>
         </div>
     )
