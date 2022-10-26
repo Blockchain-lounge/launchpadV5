@@ -13,7 +13,7 @@ const Layout = ({ children, select }) => {
     const [nav, setNav] = useState(false)
 
     const navigation = useNavigate();
-    const year = new Date().getFullYear()
+    const year= new Date().getFullYear()
 
     const navigateHome = (data) => {
         navigation(data)
@@ -25,7 +25,7 @@ const Layout = ({ children, select }) => {
             <div className='flex  justify-between h-screen'>
                 <div className='hidden lg:block lg:w-[15%] border-r lg:text-2xl text-[gray] border-[#ffffff35]'>
                     <div className='w-fit ml-[2rem]'>
-                        <img onClick={() => navigateHome('/')} className=' w-[8rem] mt-[1.4rem] mb-[1.8rem]' src={logo} alt='logo' />
+                        <img onClick={() => navigateHome('/')} className=' w-[7rem] mt-[1.4rem] mb-[1.8rem]' src={logo} alt='logo' />
                         <Link to='/' className='block py-4 w-full  hover:text-white text-left mb-4 focus:text-white'>Launchpad</Link>
                         <button onClick={() => navigateHome('/staking')} className='block py-4 w-full text-left mb-4  hover:text-white focus:text-white'>Staking</button>
                         <button onClick={() => navigateHome('/swap')} className='block py-4 w-full text-left mb-4  hover:text-white focus:text-white'>Swap</button>
