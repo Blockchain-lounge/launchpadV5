@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom'
 const Card = ({item, index}) => {
     const {btn, note, action, token, cap, menu } = item
     return (
-        <Link to={index == 0 ? '/private-sale' : '/public-sale'} className="bg-[#161616] text-white rounded-3xl py-1 h-fit w-full md:w-[45%] lg:w-[30%]">
+        <Link to={index == 0 ? '/private-sale' : '/public-sale'} className="bg-[#161616] hover:bg-[#4c4c4c38] text-white rounded-3xl py-1 h-fit w-full md:w-[45%] lg:w-[30%]">
             <div className='w-[95%] mx-auto my-2'>
                 <div className=' flex items-start  justify-between '>
                     <div className='flex items-center gap-2'>
@@ -36,9 +36,9 @@ const Card = ({item, index}) => {
                     {menu && menu.map((item, index)=> <span className='mr-2' key={index}>{item}</span>)}
                 </p>
                 <div className=' flex w-full justify-center gap-3 mt-5 mb-5'>
-                    <FontAwesomeIcon className='text-[33px]' icon={faTelegram}/>
-                    <FontAwesomeIcon className='bg-white text-black rounded-full px-2 py-2' icon={faTwitter}/>
-                    <FontAwesomeIcon className='bg-white text-black rounded-full px-2 py-2' icon={faGlobe}/>
+                    <FontAwesomeIcon className='text-[33px] hover:bg-white hover:text-black hover:text-base hover:px-2 hover:py-2' icon={faTelegram}/>
+                    <FontAwesomeIcon className='bg-white text-black hover:rounded-none rounded-full px-2 py-2' icon={faTwitter}/>
+                    <FontAwesomeIcon className='bg-white text-black hover:rounded-none rounded-full px-2 py-2' icon={faGlobe}/>
                 </div>
             </div>
         </Link>

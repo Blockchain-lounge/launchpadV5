@@ -25,10 +25,10 @@ const Inbox = () => {
         }, [status]);
 
         return (
-            <div className=' w-full px-1 mb-[8rem]'>
-                <form onSubmit={submitForm} className=" rounded-3xl px-2 w-11/12 md:w-[25rem] mx-auto h-[3rem] bg-white flex justify-between items-center">
+            <div className=' w-full px-1 mb-[6rem]'>
+                <form onSubmit={submitForm} className=" rounded-3xl px-2 w-11/12 md:w-[25rem] mx-auto h-[3.3rem] bg-white flex justify-between items-center">
                     <input required onChange={(e) => setEmail(e.target.value)} value={email} className=" text-black border-none focus:outline-none pl-5 focus:border-none" type='email' placeholder='Your email address' />
-                    <button type='submit' className="bg-[#3a1884] h-[2.5rem] rounded-full  w-[3rem]">
+                    <button type='submit' className="bg-[#3a1884] h-[2.6rem] rounded-full  w-[2.6rem]">
                         <FontAwesomeIcon icon={faArrowRight} />
                     </button>
                 </form>
@@ -55,9 +55,9 @@ const Inbox = () => {
 
     return (
         <section className="bg-black w-full py-1">
-            <div className="bg-motive rounded-3xl bg-cover bg-center w-11/12 mx-auto flex justify-center items-center text-white my-[5rem]">
+            <div className="bg-motive rounded-3xl bg-cover bg-center  flex justify-center items-center text-white my-[5rem]">
                 <div>
-                    <p className="text-[1.8rem] md:text-[2.5rem] lg:text-[4rem] lg:w-3/4 mx-auto leading-tight mb-[3rem] mt-[8rem] landing text-center">Get notified about Cloudax Launch</p>
+                    <p className="text-[1.8rem] md:text-[2.5rem] lg:text-[4rem] lg:w-3/4 mx-auto leading-none mb-[3rem] mt-[6rem] landing text-center">Get notified about Cloudax Launch</p>
                     <MailchimpSubscribe
                         url={postUrl}
                         render={({ subscribe, status, message }) => (

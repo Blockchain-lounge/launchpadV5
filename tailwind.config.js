@@ -9,6 +9,7 @@ module.exports = {
         "frame": "url('/src/images/background/Rectangle 18922.png')",
         "ground": "url('/src/images/background/ground.png')",
         "prime": "url('/src/images/background/prime.png')",
+        "wallet": "url('/src/images/background/wallet.png')",
       },
       keyframes: {
         moveUp: {

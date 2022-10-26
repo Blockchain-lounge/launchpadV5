@@ -9,12 +9,10 @@ const Info = () => {
                     <button className="w-fit block border rounded-3xl px-6 py-3 mb-[1rem] border-[#ffffff69]">Busd</button>
                     <h1 className="landing text-[1.8rem] md:text-[2.5rem] lg:text-[4rem] leading-[1.1]"><span className="block">Cloudax</span> Token IDO</h1>
                     <p className=" lg:text-2xl my-[1.5rem] w-full lg:w-3/4"> $CLDX is the native and utility token designed to power the ever-expanding and innovative cloudax ecosystem. </p>
-                    <button className="py-3 px-7 rounded-3xl bg-white text-[blue] font-bold">Enroll Whitelist</button>
+                    <button className="py-3 px-7 rounded-3xl bg-white hover:bg-transparent hover:text-white hover:border transition-all duration-500 text-[blue] font-bold">Enroll Whitelist</button>
                 </div>
             </div>
-
-            {/* Presale-card */}
-            <div className="flex flex-col md:flex-row justify-between mt-[2rem]">
+            <div className="flex flex-col gap-6 md:gap-0 md:flex-row justify-between mt-[2rem]">
                 <div className="bg-[#161616] p-7 w-full md:w-[48%] rounded-3xl">
                     <p className="border-b border-[#ffffff20]  pb-4 pt-2 text-xl">Sale Progress</p>
                     <div className="flex justify-center items-center my-[3rem]">
@@ -23,9 +21,9 @@ const Info = () => {
                         </div>
                     </div>
                     <p>How much do you want to buy ?</p>
-                    <form className="flex flex-col lg:flex-row w-full gap-5 mt-1">
-                        <input className="w-full lg:w-[20rem] bg-[inherit] text-white rounded-3xl pl-4 border border-[#ffffff50] h-[3rem]" type='number' placeholder='Enter amount ' />
-                        <button className=" grow h-[3rem] bg-gradient-to-r  from-[#3636fa] to-[#e53affc0] rounded-3xl">Approve Busd</button>
+                    <form className="flex flex-col w-full gap-5 mt-1">
+                        <input className="w-full bg-[inherit] text-white rounded-3xl pl-4 border border-[#ffffff50] h-[3rem]" type='number' placeholder='Enter amount ' />
+                        <button className=" grow h-[3rem] bg-gradient-to-r  hover:bg-gradient-to-l from-[#3636fa] to-[#e53affc0] rounded-3xl">Approve Busd</button>
                     </form>
                     <p className="text-center mt-2">Balance: 0 BUSD</p>
                 </div>

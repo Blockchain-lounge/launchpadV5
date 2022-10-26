@@ -49,8 +49,8 @@ const Launch = () => {
                     <h1 className="landing text-[1.8rem] md:text-[2.5rem] lg:text-[4rem] text-center leading-[1.1]"><span className="block">Cloudax</span> Launchpad</h1>
                     <p className="text-center lg:text-2xl my-[1.5rem]">A token launch platform for wholesome projects.</p>
                     <div className="flex flex-col md:flex-row w-11/12 md:w-fit mx-auto flex-wrap gap-6">
-                        <button className="py-3 px-7 rounded-2xl md:rounded-3xl bg-white text-black">Launchpad</button>
-                        <button className="py-3 px-7 rounded-2xl md:rounded-3xl border border-[#ffffff50]">Whitepaper</button>
+                        <button className="py-3 px-7 rounded-2xl md:rounded-3xl hover:bg-transparent hover:border hover:text-white transition-all duration-500 bg-white font-bold text-[blue]">Launchpad</button>
+                        <button className="py-3 px-7 rounded-2xl hover:border-white transition-all duration-500 md:rounded-3xl border border-[#ffffff50]">Whitepaper</button>
                     </div>
                 </div>
             </div>
