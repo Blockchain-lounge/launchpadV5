@@ -12,6 +12,8 @@ const Info = () => {
                     <button className="py-3 px-7 rounded-3xl bg-white text-[blue] font-bold">Enroll Whitelist</button>
                 </div>
             </div>
+
+            {/* Presale-card */}
             <div className="flex flex-col md:flex-row justify-between mt-[2rem]">
                 <div className="bg-[#161616] p-7 w-full md:w-[48%] rounded-3xl">
                     <p className="border-b border-[#ffffff20]  pb-4 pt-2 text-xl">Sale Progress</p>
@@ -27,6 +29,9 @@ const Info = () => {
                     </form>
                     <p className="text-center mt-2">Balance: 0 BUSD</p>
                 </div>
+                {/* Presale-card end */}
+
+                {/* Presale-info */}
                 <div className="bg-[#161616] p-7 w-full h-[25rem] md:h-[initial] md:w-[48%] rounded-3xl">
                     <p className="border-b border-[#ffffff20]  pb-4 pt-2 text-xl">Sale Details</p>
                     <div className="flex flex-col justify-between h-[80%] mt-8">
@@ -52,6 +57,7 @@ const Info = () => {
                         </p>
                     </div>
                 </div>
+                {/* Presale-info end*/}
             </div>
             <Refer />
         </Layout>

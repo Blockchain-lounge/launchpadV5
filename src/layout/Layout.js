@@ -6,18 +6,62 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../images/cloudax1-_3_.png'
 import Inbox from '../components/Inbox';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion'
+import { useMoralis } from "react-moralis";
+// const chainId = process.env.REACT_APP_CHAIN_ID;
 
 const Layout = ({ children, select }) => {
     const [nav, setNav] = useState(false)
+    // const [isOpen, toggle] = useState(false);
 
     const navigation = useNavigate();
-    const year= new Date().getFullYear()
+    const year = new Date().getFullYear()
 
     const navigateHome = (data) => {
         navigation(data)
     }
+
+
+    const {
+        authenticate,
+        isAuthenticated,
+        isAuthenticating,
+        user,
+        logout,
+        isWeb3Enabled,
+        isInitialized,
+    } = useMoralis();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            // add your logic here
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuthenticated]);
+    const login = async () => {
+        if (!isAuthenticated) {
+
+            await authenticate({ signingMessage: "Log in using Moralis" })
+                .then(function (user) {
+                    console.log("logged in user:", user);
+                    // console.log(user!.get("ethAddress"));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    }
+
+    const logOut = async () => {
+        await logout();
+        console.log("logged out");
+    }
+
+
+    // async function connectWeb() {
+    //     alert("Connect")
+    // }
 
     return (
         <section className='w-full text-white bg-black'>
@@ -38,7 +82,7 @@ const Layout = ({ children, select }) => {
                         <nav className=' sticky top-0 w-full h-[4rem] mb-[1rem] overflow-x'>
                             <div className=' w-full bg-black flex items-center justify-end h-[4rem]'>
                                 <img onClick={() => navigateHome('/')} className=' w-[5rem] ml-[1rem] block lg:hidden mr-auto' src={logo} alt='logo' />
-                                <button className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>Connect Wallet</button>
+                                <button onClick={login} className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>Connect Wallet</button>
                                 <button onClick={() => setNav(!nav)} className={`text-white block ml-3 lg:hidden bg-[#4444b7] ${nav ? 'text-2xl' : 'text-xl'} rounded-md px-3 py-1`}>
                                     <FontAwesomeIcon icon={nav ? faXmark : faBars} />
                                 </button>
