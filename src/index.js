@@ -18,7 +18,8 @@ const appId = process.env.REACT_APP_MORALIS_APP_ID;
 
 root.render(
   <React.StrictMode>
-    <MoralisProvider serverUrl={serverUrl} appId={appId}>
+    <MoralisProvider serverUrl="https://hdzl2ub3gi9l.grandmoralis.com:2053/server" appId="hi1PPcg5QWC4twpwY499hSYuGhiXPC2cF7lLK9hL">
+      {/* <MoralisProvider serverUrl={serverUrl} appId={appId}> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<App />} />

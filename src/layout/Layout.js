@@ -6,13 +6,16 @@ import { useNavigate } from 'react-router-dom';
 import logo from '../images/cloudax1-_3_.png'
 import Inbox from '../components/Inbox';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion'
+import { useMoralis } from "react-moralis";
 import { useLocation } from 'react-router-dom';
+// const chainId = process.env.REACT_APP_CHAIN_ID;
 
 const Layout = ({ children }) => {
     const history = useLocation().pathname;
     const [nav, setNav] = useState(false)
+    // const [isOpen, toggle] = useState(false);
 
     const navigation = useNavigate();
     const year = new Date().getFullYear()
@@ -20,6 +23,47 @@ const Layout = ({ children }) => {
     const navigateHome = (data) => {
         navigation(data)
     }
+
+
+    const {
+        authenticate,
+        isAuthenticated,
+        isAuthenticating,
+        user,
+        logout,
+        isWeb3Enabled,
+        isInitialized,
+    } = useMoralis();
+
+    useEffect(() => {
+        if (isAuthenticated) {
+            // add your logic here
+        }
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isAuthenticated]);
+    const login = async () => {
+        if (!isAuthenticated) {
+
+            await authenticate({ signingMessage: "Log in using Moralis" })
+                .then(function (user) {
+                    console.log("logged in user:", user);
+                    // console.log(user!.get("ethAddress"));
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    }
+
+    const logOut = async () => {
+        await logout();
+        console.log("logged out");
+    }
+
+
+    // async function connectWeb() {
+    //     alert("Connect")
+    // }
 
     return (
         <section className='w-full text-white bg-black'>
