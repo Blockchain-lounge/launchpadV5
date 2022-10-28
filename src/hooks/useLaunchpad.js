@@ -92,7 +92,7 @@ export default function useLaunchpad({ address, ABI, userAddress, sale }) {
         saleCap,
         sold,
         hasWhitelist,
-        hasAllocation,
+        // hasAllocation,
         saleAllocated,
         saleEndDate,
       ] = launchpadData[sale];
@@ -104,7 +104,7 @@ export default function useLaunchpad({ address, ABI, userAddress, sale }) {
         saleCap,
         sold,
         hasWhitelist,
-        hasAllocation,
+        // hasAllocation,
         saleAllocated,
         saleEndDate,
       });
@@ -170,9 +170,9 @@ export default function useLaunchpad({ address, ABI, userAddress, sale }) {
       throw Error("Please provide a valid amount");
     }
     if (parseFloat(amount) <= 0) {
-      if (launchpadSale.hasAllocation) {
-        throw Error("You do not have any BUSD allocation to buy this sale");
-      }
+      // if (launchpadSale.hasAllocation) {
+      //   throw Error("You do not have any BUSD allocation to buy this sale");
+      // }
       throw Error("Please provide a valid amount");
     }
     return ethers.utils.parseEther(amount.toString());

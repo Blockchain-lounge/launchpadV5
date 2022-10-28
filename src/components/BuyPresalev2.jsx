@@ -17,7 +17,6 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
   const {
     saleId,
     userAddress,
-    launchpadSale: { hasAllocation },
     // launchpadSale: { hasAllocation },
   } = launchpadState;
   const busdBalance = useGetBEP20Balance({
@@ -27,22 +26,23 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
   const [buying, setBuying] = useState(false);
 
   useEffect(() => {
-    async function getUserAllocation() {
-      try {
-        const userAllocation = await launchpad.allocatedBuy(
-          saleId,
-          userAddress
-        );
-        setPresaleAmount(toEther(userAllocation));
-      } catch (e) {
-        setPresaleAmount(0);
-        console.log(e);
-      }
-    }
-    if (hasAllocation && launchpad && userAddress) {
-      getUserAllocation();
-    }
-  }, [hasAllocation, launchpad, userAddress, saleId]);
+    // async function getUserAllocation() {
+    //   try {
+    //     const userAllocation = await launchpad.allocatedBuy(
+    //       saleId,
+    //       userAddress
+    //     );
+    //     setPresaleAmount(toEther(userAllocation));
+    //   } catch (e) {
+    //     setPresaleAmount(0);
+    //     console.log(e);
+    //   }
+    // }
+    // if (hasAllocation && launchpad && userAddress) {
+    //   getUserAllocation();
+    // }
+  }, [launchpad, userAddress, saleId]);
+  // }, [hasAllocation, launchpad, userAddress, saleId]);
 
   const buy = async () => {
     try {
@@ -112,11 +112,12 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
       {/* new codebase */}
       <p>How much do you want to buy ?</p>
       <form className="flex flex-col w-full gap-5 mt-1">
-        {hasAllocation && (
+        {/* {hasAllocation && (
           <label className="block mb-2 text-white">Your BUSD Allocation</label>
-        )}
+        )} */}
         <input
-          disabled={buying || hasAllocation}
+          // disabled={buying || hasAllocation}
+          disabled={buying}
           value={presaleAmount}
           onChange={(e) => setPresaleAmount(e.target.value)}
           onInput={(e) => setPresaleAmount(e.target.value)}

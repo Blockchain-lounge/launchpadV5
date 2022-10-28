@@ -1,6 +1,6 @@
 import React from "react";
-import ReferralEarningsv2 from "./ReferralEarnings";
-import ReferralLinkv2 from "./ReferralLink";
+import ReferralEarningsv2 from "./ReferralEarningsv2";
+import ReferralLinkv2 from "./ReferralLinkv2";
 
 function ReferralSystemv2({ launchpadState, launchpadHelpers }) {
   const tokenTicker = process.env.REACT_APP_TOKEN_TICKER;

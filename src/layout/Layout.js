@@ -25,7 +25,7 @@ const Layout = ({ children }) => {
     const connectorId = window.localStorage.getItem("connectorId");
     const chainId = process.env.REACT_APP_CHAIN_ID;
 
-    const { isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isInitialized, enableWeb3 } = useMoralis();
+    const { isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isInitialized, enableWeb3, user } = useMoralis();
 
     useEffect(() => {
         async function bootWeb3() {
@@ -36,6 +36,8 @@ const Layout = ({ children }) => {
         bootWeb3();
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isInitialized, isAuthenticated]);
+
+    console.log(user)
     return (
         <section className='w-full text-white bg-black'>
 
@@ -58,7 +60,10 @@ const Layout = ({ children }) => {
                                 <Link className='mr-auto block lg:hidden ml-[1rem] ' to='/'>
                                     <img className=' w-[5rem]' src={logo} alt='logo' />
                                 </Link>
-                                <ConnectWallet />
+                                {/* <ConnectWallet /> */}
+                                <button className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>
+                                    <ConnectWallet />
+                                </button>
                                 {/* <button className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>Connect Wallet</button> */}
                                 <button onClick={() => setNav(!nav)} className={`text-white block ml-3 lg:hidden bg-[#4444b7] ${nav ? 'text-2xl' : 'text-xl'} rounded-md px-3 py-1`}>
                                     <FontAwesomeIcon icon={nav ? faXmark : faBars} />

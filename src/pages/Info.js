@@ -4,18 +4,20 @@ import { useMoralis } from "react-moralis";
 import useLaunchpad from "../hooks/useLaunchpad";
 import LAUNCHPAD_ABI from "../abis/Launchpad.json";
 // import VestingSchedule from "../VestingSchedule";
-import ReferralSystemv2 from "../components/ReferralSystem";
-import PresaleInfov2 from "../components/PresaleInfo";
-import PresaleCardv2 from "../components/PresaleCard";
+import ReferralSystemv2 from "../components/ReferralSystemv2";
+import PresaleInfov2 from "../components/PresaleInfov2";
+import PresaleCardv2 from "../components/PresaleCardv2";
 
 const Info = ({ sale }) => {
-
     const { user } = useMoralis();
+    console.log("User", user)
+    console.log("Sale", sale)
+    console.log("User Address", user?.get("ethAddress"))
     const launchpadOptions = {
-        ABI: LAUNCHPAD_ABI,
-        sale: sale,
-        userAddress: user?.get("ethAddress"),
         address: process.env.REACT_APP_LAUNCHPAD_ADDRESS,
+        ABI: LAUNCHPAD_ABI,
+        userAddress: user?.get("ethAddress"),
+        sale: sale
     };
 
     const { helpers: launchpadHelpers, state: launchpadState } =

@@ -2,7 +2,7 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { toEther } from "../utils/web3";
 import { inThousands } from "../utils/modifiers";
-import BuyPresale from "./BuyPresale";
+// import BuyPresale from "./BuyPresale";
 import BuyPresalev2 from "./BuyPresalev2";
 
 function PresaleCardv2({ launchpadState, launchpadHelpers }) {
@@ -20,29 +20,6 @@ function PresaleCardv2({ launchpadState, launchpadHelpers }) {
   }, [launchpadSale]);
   return (
     <div className="Launchpad__card">
-      <p className="text">Progress</p>
-      <div className="w-full relative h-[20px] rounded-full mt-4 bg-white">
-        <div
-          style={{ width: `${soldPercent}%` }}
-          className={`absolute -top-2 h-[20px] rounded-full mt-2 bg-myblue`}
-        ></div>
-      </div>
-      <div className="flex justify-between mt-4">
-        <p className="text">{soldPercent}%</p>
-        <p className="text">
-          {inThousands(toEther(launchpadSale?.sold || "0"))}/
-          {inThousands(toEther(launchpadSale?.saleCap || "0"))} BUSD
-        </p>
-      </div>
-      {
-        // !userVestingSchedule?.length > 0 && 
-        (
-          <BuyPresale
-            launchpadState={launchpadState}
-            launchpadHelpers={launchpadHelpers}
-          />
-        )}
-
       <div className="bg-[#161616] p-7 w-full md:w-[48%] rounded-3xl">
         <p className="border-b border-[#ffffff20]  pb-4 pt-2 text-xl">Sale Progress</p>
         <div className="flex justify-center items-center my-[3rem]">
@@ -51,7 +28,14 @@ function PresaleCardv2({ launchpadState, launchpadHelpers }) {
           </div>
         </div>
 
-        <BuyPresalev2 />
+        {
+          // !userVestingSchedule?.length > 0 && 
+          (
+            <BuyPresalev2
+              launchpadState={launchpadState}
+              launchpadHelpers={launchpadHelpers}
+            />
+          )}
 
       </div>
     </div>
