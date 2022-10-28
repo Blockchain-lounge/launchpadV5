@@ -3,15 +3,16 @@
 @tailwind utilities;
 
 @layer base {
-  ul, ol {
+  ul,
+  ol {
     list-style: revert;
   }
 }
 
 .scrollbar-hide::-webkit-scrollbar {
   display: none;
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none;
 }
 
 input::-webkit-outer-spin-button,
@@ -44,13 +45,3 @@ body {
 .myFont {
   font-family: DM Sans;
 }
-
-
-
-
-
-
-
-
-
-

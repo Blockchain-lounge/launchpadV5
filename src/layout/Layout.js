@@ -7,15 +7,14 @@ import logo from '../images/cloudax1-_3_.png'
 import Inbox from '../components/Inbox';
 import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-import { AnimatePresence, motion } from 'framer-motion'
+// import { AnimatePresence, motion } from 'framer-motion'
 import { useMoralis } from "react-moralis";
+import ConnectWallet from "../auth/ConnectWallet";
 import { useLocation } from 'react-router-dom';
-// const chainId = process.env.REACT_APP_CHAIN_ID;
 
 const Layout = ({ children }) => {
     const history = useLocation().pathname;
     const [nav, setNav] = useState(false)
-    // const [isOpen, toggle] = useState(false);
 
     const navigation = useNavigate();
     const year = new Date().getFullYear()
@@ -23,48 +22,20 @@ const Layout = ({ children }) => {
     const navigateHome = (data) => {
         navigation(data)
     }
+    const connectorId = window.localStorage.getItem("connectorId");
+    const chainId = process.env.REACT_APP_CHAIN_ID;
 
-
-    const {
-        authenticate,
-        isAuthenticated,
-        isAuthenticating,
-        user,
-        logout,
-        isWeb3Enabled,
-        isInitialized,
-    } = useMoralis();
+    const { isWeb3Enabled, isAuthenticated, isWeb3EnableLoading, isInitialized, enableWeb3 } = useMoralis();
 
     useEffect(() => {
-        if (isAuthenticated) {
-            // add your logic here
+        async function bootWeb3() {
+            if (isAuthenticated && !isWeb3Enabled && !isWeb3EnableLoading) {
+                await enableWeb3({ provider: connectorId, chainId: chainId });
+            }
         }
+        bootWeb3();
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [isAuthenticated]);
-    const login = async () => {
-        if (!isAuthenticated) {
-
-            await authenticate({ signingMessage: "Log in using Moralis" })
-                .then(function (user) {
-                    console.log("logged in user:", user);
-                    // console.log(user!.get("ethAddress"));
-                })
-                .catch(function (error) {
-                    console.log(error);
-                });
-        }
-    }
-
-    const logOut = async () => {
-        await logout();
-        console.log("logged out");
-    }
-
-
-    // async function connectWeb() {
-    //     alert("Connect")
-    // }
-
+    }, [isInitialized, isAuthenticated]);
     return (
         <section className='w-full text-white bg-black'>
 
@@ -87,30 +58,31 @@ const Layout = ({ children }) => {
                                 <Link className='mr-auto block lg:hidden ml-[1rem] ' to='/'>
                                     <img className=' w-[5rem]' src={logo} alt='logo' />
                                 </Link>
-                                <button className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>Connect Wallet</button>
+                                <ConnectWallet />
+                                {/* <button className='border rounded-3xl px-6 py-2 border-[#ffffff4e]'>Connect Wallet</button> */}
                                 <button onClick={() => setNav(!nav)} className={`text-white block ml-3 lg:hidden bg-[#4444b7] ${nav ? 'text-2xl' : 'text-xl'} rounded-md px-3 py-1`}>
                                     <FontAwesomeIcon icon={nav ? faXmark : faBars} />
                                 </button>
 
-                                <AnimatePresence>
-                                    {nav && <motion.div key='box' initial={{ x: 0 }} exit={{ x: 500 }} transition={{ ease: "easeOut", duration: 0.5 }} className={`w-full z-10 animate-mover flex flex-col absolute top-[4rem]  h-screen  text-white lg:hidden bg-black `}>
-                                        <Link to='/' onClick={() => setNav(false)} className=' flex py-4 w-11/12 mx-auto  items-center border-b border-[#ffffff37]' >Launchpad</Link>
-                                        <Link onClick={() => setNav(false)} to='/staking' className='w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'>Staking</Link>
-                                        <Link to='/swap' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Swap</Link>
-                                        <Link to='/Explorer' onClick={() => setNav(false)} className=' flex items-center py-4 w-11/12 mx-auto border-b border-[#ffffff3d]' >Explorer</Link>
-                                        <Link to='/Rewards' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Rewards</Link>
-                                        <div className='py-4 flex gap-5 text-xl h-auto grow  items-center justify-center w-full  '>
-                                            <a target='blank' href='https://t.me/cloudaxofficial'>
-                                                <FontAwesomeIcon icon={faTelegram} /> </a>
-                                            <a target='blank' href='https://twitter.com/CloudaxHQ'
-                                            > <FontAwesomeIcon icon={faTwitter} /> </a>
-                                            <a target='blank' href='https://cloudax.medium.com/'>
-                                                <FontAwesomeIcon icon={faMedium} /></a>
-                                            <a target='blank' href='/'>
-                                                <FontAwesomeIcon icon={faGithub} /></a>
-                                        </div>
-                                    </motion.div>}
-                                </AnimatePresence>
+                                {/* <AnimatePresence> */}
+                                {/* {nav && <motion.div key='box' initial={{ x: 0 }} exit={{ x: 500 }} transition={{ ease: "easeOut", duration: 0.5 }} className={`w-full z-10 animate-mover flex flex-col absolute top-[4rem]  h-screen  text-white lg:hidden bg-black `}> */}
+                                <Link to='/' onClick={() => setNav(false)} className=' flex py-4 w-11/12 mx-auto  items-center border-b border-[#ffffff37]' >Launchpad</Link>
+                                <Link onClick={() => setNav(false)} to='/staking' className='w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'>Staking</Link>
+                                <Link to='/swap' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Swap</Link>
+                                <Link to='/Explorer' onClick={() => setNav(false)} className=' flex items-center py-4 w-11/12 mx-auto border-b border-[#ffffff3d]' >Explorer</Link>
+                                <Link to='/Rewards' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Rewards</Link>
+                                <div className='py-4 flex gap-5 text-xl h-auto grow  items-center justify-center w-full  '>
+                                    <a target='blank' href='https://t.me/cloudaxofficial'>
+                                        <FontAwesomeIcon icon={faTelegram} /> </a>
+                                    <a target='blank' href='https://twitter.com/CloudaxHQ'
+                                    > <FontAwesomeIcon icon={faTwitter} /> </a>
+                                    <a target='blank' href='https://cloudax.medium.com/'>
+                                        <FontAwesomeIcon icon={faMedium} /></a>
+                                    <a target='blank' href='/'>
+                                        <FontAwesomeIcon icon={faGithub} /></a>
+                                </div>
+                                {/* </motion.div>} */}
+                                {/* </AnimatePresence> */}
                             </div>
                         </nav>
                         <main>
