@@ -2,15 +2,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCopyright } from '@fortawesome/free-regular-svg-icons';
 import { faTwitter, faTelegram, faMedium, faGithub, faUsps } from '@fortawesome/free-brands-svg-icons';
 import { faBars, faXmark, faRocket, faHandshake, faBookOpen, faWindowMaximize } from '@fortawesome/free-solid-svg-icons';
-import { useNavigate } from 'react-router-dom';
 import logo from '../images/cloudax1-_3_.png'
 import Inbox from '../components/Inbox';
-import { Link } from 'react-router-dom';
 import { useState, useEffect } from 'react';
-// import { AnimatePresence, motion } from 'framer-motion'
+ import { AnimatePresence, motion } from 'framer-motion'
 import { useMoralis } from "react-moralis";
 import ConnectWallet from "../auth/ConnectWallet";
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link, useNavigate } from 'react-router-dom';
 
 const Layout = ({ children }) => {
     const history = useLocation().pathname;
@@ -69,25 +67,25 @@ const Layout = ({ children }) => {
                                     <FontAwesomeIcon icon={nav ? faXmark : faBars} />
                                 </button>
 
-                                {/* <AnimatePresence> */}
-                                {/* {nav && <motion.div key='box' initial={{ x: 0 }} exit={{ x: 500 }} transition={{ ease: "easeOut", duration: 0.5 }} className={`w-full z-10 animate-mover flex flex-col absolute top-[4rem]  h-screen  text-white lg:hidden bg-black `}> */}
-                                <Link to='/' onClick={() => setNav(false)} className=' flex py-4 w-11/12 mx-auto  items-center border-b border-[#ffffff37]' >Launchpad</Link>
-                                <Link onClick={() => setNav(false)} to='/staking' className='w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'>Staking</Link>
-                                <Link to='/swap' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Swap</Link>
-                                <Link to='/Explorer' onClick={() => setNav(false)} className=' flex items-center py-4 w-11/12 mx-auto border-b border-[#ffffff3d]' >Explorer</Link>
-                                <Link to='/Rewards' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Rewards</Link>
-                                <div className='py-4 flex gap-5 text-xl h-auto grow  items-center justify-center w-full  '>
-                                    <a target='blank' href='https://t.me/cloudaxofficial'>
-                                        <FontAwesomeIcon icon={faTelegram} /> </a>
-                                    <a target='blank' href='https://twitter.com/CloudaxHQ'
-                                    > <FontAwesomeIcon icon={faTwitter} /> </a>
-                                    <a target='blank' href='https://cloudax.medium.com/'>
-                                        <FontAwesomeIcon icon={faMedium} /></a>
-                                    <a target='blank' href='/'>
-                                        <FontAwesomeIcon icon={faGithub} /></a>
-                                </div>
-                                {/* </motion.div>} */}
-                                {/* </AnimatePresence> */}
+                                <AnimatePresence>
+                                    {nav && <motion.div key='box' initial={{ x: 0 }} exit={{ x: 500 }} transition={{ ease: "easeOut", duration: 0.5 }} className={`w-full z-10 animate-mover flex flex-col absolute top-[4rem]  h-screen  text-white lg:hidden bg-black `}>
+                                        <Link to='/' onClick={() => setNav(false)} className=' flex py-4 w-11/12 mx-auto  items-center border-b border-[#ffffff37]' >Launchpad</Link>
+                                        <Link onClick={() => setNav(false)} to='/staking' className='w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'>Staking</Link>
+                                        <Link to='/swap' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Swap</Link>
+                                        <Link to='/Explorer' onClick={() => setNav(false)} className=' flex items-center py-4 w-11/12 mx-auto border-b border-[#ffffff3d]' >Explorer</Link>
+                                        <Link to='/Rewards' className=' w-11/12 mx-auto flex items-center py-4  border-b border-[#ffffff3d]'> Rewards</Link>
+                                        <div className='py-4 flex gap-5 text-xl h-auto grow  items-center justify-center w-full  '>
+                                            <a target='blank' href='https://t.me/cloudaxofficial'>
+                                                <FontAwesomeIcon icon={faTelegram} /> </a>
+                                            <a target='blank' href='https://twitter.com/CloudaxHQ'
+                                            > <FontAwesomeIcon icon={faTwitter} /> </a>
+                                            <a target='blank' href='https://cloudax.medium.com/'>
+                                                <FontAwesomeIcon icon={faMedium} /></a>
+                                            <a target='blank' href='/'>
+                                                <FontAwesomeIcon icon={faGithub} /></a>
+                                        </div>
+                                    </motion.div> }
+                                 </AnimatePresence>
                             </div>
                         </nav>
                         <main>

@@ -22,23 +22,21 @@ function ReferralLinkv2() {
     }
   }, [user]);
   return (
-    <div className="flex flex-col justify-between Referral__item">
-      <h3 className="mb-1 text-center Referral__item-header">
+    <div className="">
+      <h3 className="mb-1 mt-4">
         Your Referral Link
       </h3>
-      <input
-        readOnly={true}
-        className="xl:h-[30px] h-[15px] w-full rounded-full text2  text-black py-4 lg:py-5 xl:py-6 px-4 lg:px-6 border-0 text2 outline-none bg-slate-200 block mb-5"
-        placeholder="Referral Link"
-        aria-label="Referral Link"
-        value={referralLink}
-      />
-      <button
-        ref={clickRef}
-        className="justify-center btn text-dark max-w-[150px] mx-auto"
-      >
-        {buttonText}
-      </button>
+      <div className="flex items-center border rounded-3xl p-1">
+        <input readOnly={true}
+          className=" bg-transparent w-3/4 border-0 py-3 pl-5 text-white outline-none "
+          placeholder="Referral Link"
+          aria-label="Referral Link"
+          value={referralLink} />
+
+        <button ref={clickRef} className="w-1/4 py-3">
+          {buttonText}
+        </button>
+      </div>
     </div>
   );
 }

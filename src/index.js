@@ -1,13 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from './App';
-import reportWebVitals from "./reportWebVitals";
+import App from './pages/App';
 import { MoralisProvider } from "react-moralis";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-// import Home from "./Home";
-// import StakeCloudax from "./StakeCloudax";
-// import VestingSchedule from "./VestingSchedule";
 import ErrorPage from "./components/ErrorPage";
 import Explorer from './pages/Explorer.js'
 import Staking from './pages/Staking';
@@ -25,8 +21,6 @@ root.render(
     <MoralisProvider serverUrl={serverUrl} appId={appId}>
       <BrowserRouter>
         <Routes>
-          {/* <Route path="/" element={<Home />} />
-          <Route path="/staking" element={<StakeCloudax />} /> */}
           <Route path="*" element={<ErrorPage />} />
           <Route path="/" element={<App />} />
           <Route path="/explorer" element={<Explorer />} />
@@ -40,8 +34,3 @@ root.render(
     </MoralisProvider>
   </React.StrictMode>
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();

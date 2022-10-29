@@ -30,23 +30,28 @@ function ReferralEarningsv2({ launchpadState, launchpadHelpers }) {
       });
     }
   };
+
   return (
-    <div className="flex flex-col justify-between Referral__item">
-      <h3 className="mb-1 text-center Referral__item-header">
-        Your Referral Earnings
-      </h3>
-      <h3 className="mb-3 text-xl font-bold text-center break-words font-monument lg:text-2xl text-slate-200">
-        {inThousands("0")} {tokenTicker}
-        {/* {inThousands(userReferralEarning || "0")} {tokenTicker} */}
-      </h3>
+    <div className="">
+      <div className="bg-prime bg-cover bg-center rounded-3xl p-1">
+        <h3 className="mb-1 mt-4 ml-3">
+          Your Referral Earnings
+        </h3>
+        <h3 className="landing text-[1.8rem] mb-4 md:text-[2.5rem] ml-3 leading-none lg:text-[4rem]">
+          {inThousands("0")} {tokenTicker}
+          <span>$CLDX</span>
+          {/* {inThousands(userReferralEarning || "0")} {tokenTicker} */}
+        </h3>
+      </div>
       <button
-        onClick={async () => await claim()}
-        disabled={!canClaimReferralEarning}
-        className="justify-center btn text-dark max-w-[170px] lg:max-w-fit mx-auto disabled:bg-gray-400"
-      >
-        {claimState} {claimState !== "Claim Earnings" && <BouncingDotsLoader />}
-      </button>
+          onClick={async () => await claim()}
+          disabled={!canClaimReferralEarning}
+          className=" w-full bg-prime bg:cover bg-center py-3 rounded-2xl mt-4 font-bold text-center"
+        >
+          {claimState} {claimState !== "Claim Earnings" && <BouncingDotsLoader />}
+        </button>
     </div>
+
   );
 }
 

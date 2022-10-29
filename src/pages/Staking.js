@@ -49,7 +49,6 @@ const Staking = () => {
                 </div>
             </div>
 
-
             <div className="flex justify-between flex-wrap gap-y-6">
                 <div className="bg-[#161616] w-full md:w-[47%] rounded-[2rem] p-7">
                     <div className="flex justify-between items-center">
@@ -63,7 +62,7 @@ const Staking = () => {
 
                     <form onSubmit={submitForm} className=" w-full mt-6 mb-[4rem]">
                         <p className="text-[14px] mb-1">Enter the amount of $CLDX you want to {stake ? 'stake' : 'unstake'}</p>
-                        <input onChange={(e) => setAmount(e.target.value)} className="w-full bg-[inherit] text-white rounded-3xl mb-4 pl-4 border border-[#ffffff50] h-[3rem]" type='number' placeholder='Enter amount ' />
+                        <input onChange={(e) => setAmount(e.target.value)} className="w-full bg-transparent text-white rounded-3xl mb-4 pl-4 border border-[#ffffff50] h-[3rem]" type='number' placeholder='Enter amount ' />
                         <button type="submit" className=" w-full block h-[3rem] bg-gradient-to-r hover:bg-gradient-to-l to-[blue] from-[#e53affc0] rounded-3xl">{stake ? 'Stake' : 'Unstake'}</button>
                         <p className=" text-[14px] mt-1">Balance: 0 CLDX</p>
                     </form>

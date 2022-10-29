@@ -6,9 +6,6 @@ function ReferralSystemv2({ launchpadState, launchpadHelpers }) {
   const tokenTicker = process.env.REACT_APP_TOKEN_TICKER;
   return (
     <section className="Launchpad__card lg:col-span-2">
-      <h3 className="text-lg font-extrabold text-center lg:text-3xl">
-        Refer and Earn {tokenTicker}
-      </h3>
       <div className="Referral__item-group">
         {/* <ReferralLink /> */}
         {/* <ReferralEarnings
@@ -26,9 +23,8 @@ function ReferralSystemv2({ launchpadState, launchpadHelpers }) {
 
 
         <div className="w-full md:w-[60%] lg:w-[40%]">
-          <div className="bg-prime bg-cover bg-center flex items-center rounded-3xl h-[8rem] w-full">
-            <div className="ml-[1rem]">
-              <p>Your Referral Earnings</p>
+          <div className="w-full">
+            <div className="w-full">
               <ReferralEarningsv2
                 launchpadState={launchpadState}
                 launchpadHelpers={launchpadHelpers}
@@ -36,7 +32,6 @@ function ReferralSystemv2({ launchpadState, launchpadHelpers }) {
               {/* <p className="landing text-[1.8rem] md:text-[2.5rem]  leading-none lg:text-[4rem]">0.00 CLDX</p> */}
             </div>
           </div>
-          <p className="mt-[2rem]">Your Referral Code</p>
           {/* <button className="w-full flex justify-between items-center gap-5 py-3 rounded-3xl border border-[#ffffff55]"> <span className='ml-[2rem]'> www.cloundax.io/referral </span>  <span className="bg-gradient-to-r from-[#3434ff] to-[#0091ff] text-transparent font-extrabold bg-clip-text mr-[1.5rem]">Copy</span></button> */}
           <ReferralLinkv2 />
         </div>
