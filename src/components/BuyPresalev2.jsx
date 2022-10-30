@@ -25,23 +25,24 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
   const [presaleAmount, setPresaleAmount] = useState("");
   const [buying, setBuying] = useState(false);
 
-  // useEffect(() => {
-  //   async function getUserAllocation() {
-  //     try {
-  //       const userAllocation = await launchpad.allocatedBuy(
-  //         saleId,
-  //         userAddress
-  //       );
-  //       setPresaleAmount(toEther(userAllocation));
-  //     } catch (e) {
-  //       setPresaleAmount(0);
-  //       console.log(e);
-  //     }
-  //   }
-  //   if (hasAllocation && launchpad && userAddress) {
-  //     getUserAllocation();
-  //   }
-  // }, [launchpad, userAddress, saleId]);
+  useEffect(() => {
+    async function getUserAllocation() {
+      try {
+        const userAllocation = await launchpad.allocatedBuy(
+          saleId,
+          userAddress
+        );
+        setPresaleAmount(toEther(userAllocation));
+      } catch (e) {
+        setPresaleAmount(0);
+        console.log(e);
+      }
+    }
+    // if (hasAllocation && launchpad && userAddress) {
+    if (launchpad && userAddress) {
+      // getUserAllocation();
+    }
+  }, [launchpad, userAddress, saleId]);
   // }, [hasAllocation, launchpad, userAddress, saleId]);
 
   const buy = async () => {
@@ -123,7 +124,14 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
           onInput={(e) => setPresaleAmount(e.target.value)}
           className="w-full bg-[#00000000] text-white rounded-3xl pl-4 border border-[#ffffff50] h-[3rem]" type='number' placeholder='Enter amount ' />
         {/* <input className="w-full bg-[inherit] text-white rounded-3xl pl-4 border border-[#ffffff50] h-[3rem]" type='number' placeholder='Enter amount ' /> */}
-        {/* <button className="grow h-[3rem] bg-gradient-to-r  hover:bg-gradient-to-l from-[#3636fa] to-[#e53affc0] rounded-3xl">Approve Busd</button> */}
+
+        {/* <ApproveAmount
+          amount={presaleAmount}
+          launchpadState={launchpadState}
+          launchpadHelpers={launchpadHelpers}
+          proceedToBuy={buy}
+        /> */}
+        <button className="grow h-[3rem] bg-gradient-to-r  hover:bg-gradient-to-l from-[#3636fa] to-[#e53affc0] rounded-3xl">Approve Busd</button>
         <button
           disabled={buying}
           onClick={async () => await buy()}

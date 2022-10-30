@@ -27,7 +27,7 @@ root.render(
           <Route path="/staking" element={<Staking />} />
           <Route path="/rewards" element={<Rewards />} />
           <Route path="/Swap" element={<Swap />} />
-          <Route path="/private-sale" element={<Info sale={2} />} />
+          <Route path="/private-sale" element={<Info sale={1} />} />
           <Route path="/public-sale" element={<Info1 />} />
         </Routes>
       </BrowserRouter>
