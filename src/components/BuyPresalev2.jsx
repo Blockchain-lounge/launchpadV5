@@ -9,6 +9,7 @@ import { inThousands } from "../utils/modifiers";
 
 export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
   const {
+    approveBUSD: approveTx,
     core: launchpad,
     buyLaunchpadSale: buyPresale,
     loadLaunchpad: reloadLaunchpad,
@@ -23,6 +24,7 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
     address: process.env.REACT_APP_BUSD_ADDRESS,
   });
   const [presaleAmount, setPresaleAmount] = useState("");
+  // const [approveBUSD, setAapproveBUSD] =  useState("");
   const [buying, setBuying] = useState(false);
 
   useEffect(() => {
@@ -48,6 +50,7 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
   const buy = async () => {
     try {
       setBuying(true);
+      await approveTx(presaleAmount);
       const transaction = await buyPresale(presaleAmount);
       const isSuccessful = await isSuccessfulTransaction(transaction);
       if (isSuccessful) {
@@ -131,7 +134,7 @@ export default function BuyPresalev2({ launchpadState, launchpadHelpers }) {
           launchpadHelpers={launchpadHelpers}
           proceedToBuy={buy}
         /> */}
-        <button className="grow h-[3rem] bg-gradient-to-r  hover:bg-gradient-to-l from-[#3636fa] to-[#e53affc0] rounded-3xl">Approve Busd</button>
+        {/* <button onChange={e} className="grow h-[3rem] bg-gradient-to-r  hover:bg-gradient-to-l from-[#3636fa] to-[#e53affc0] rounded-3xl">Approve Busd</button> */}
         <button
           disabled={buying}
           onClick={async () => await buy()}
